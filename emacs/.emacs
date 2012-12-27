@@ -121,18 +121,21 @@
 ;            (local-set-key (kbd "C-c .") 'ac-complete-rsense)))
 
 ;; Transparency (does not work with color-theme)
-(set-frame-parameter (selected-frame) 'alpha '(85 50))
-(add-to-list 'default-frame-alist '(alpha 85 50))
+;(set-frame-parameter (selected-frame) 'alpha '(85 50))
+;(add-to-list 'default-frame-alist '(alpha 85 50))
+;
+;(eval-when-compile (require 'cl))
+; (defun toggle-transparency ()
+;   (interactive)
+;   (if (/=
+;        (cadr (frame-parameter nil 'alpha))
+;        100)
+;       (set-frame-parameter nil 'alpha '(100 100))
+;     (set-frame-parameter nil 'alpha '(85 50))))
+;(global-set-key (kbd "C-c t") 'toggle-transparency)
 
-(eval-when-compile (require 'cl))
- (defun toggle-transparency ()
-   (interactive)
-   (if (/=
-        (cadr (frame-parameter nil 'alpha))
-        100)
-       (set-frame-parameter nil 'alpha '(100 100))
-     (set-frame-parameter nil 'alpha '(85 50))))
-(global-set-key (kbd "C-c t") 'toggle-transparency)
+;; Follow links version controlled files without asking
+(setq vc-follow-symlinks t)
 
 ;; buffer-move (useful in with C-x 3)
 (require 'buffer-move)
