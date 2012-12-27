@@ -1,0 +1,12 @@
+[user]
+	name = Chetan Vaity
+	email = chetanv@gmail.com
+[color]
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	excludesfile = /home/chetanv/.gitignore_global
+	editor = emacs -nw
+[merge]
+	stat = true
