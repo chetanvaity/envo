@@ -31,7 +31,7 @@
 ;;(set-frame-font "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-9")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-1")
 ;(set-background-color "black")
-(set-foreground-color "light yellow")
+;(set-foreground-color "light yellow")
 
 ;;Redefine the complete-symbol key (Originally C-<TAB>, but it's used by the Window Manager to switch between windows)
 (global-set-key '[(f2)] 'save-buffer)
@@ -100,10 +100,10 @@
 ;(setq frame-title-format "%f")
 
 ;; Column marker
-(require 'column-marker)
-(add-hook 'java-mode-hook (lambda () (interactive) (column-marker-1 80)))
-(global-set-key [?\C-c ?m] 'column-marker-1)
-(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;(require 'column-marker)
+;(add-hook 'java-mode-hook (lambda () (interactive) (column-marker-1 80)))
+;(global-set-key [?\C-c ?m] 'column-marker-1)
+;(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 (require 'haml-mode)
 
