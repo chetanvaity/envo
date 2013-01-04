@@ -57,7 +57,7 @@
 (require 'color-theme)
 ;(color-theme-goldenrod) ; Dark bg - golden fonts
 ;(color-theme-dark-laptop) ; Excellent
-(color-theme-hober) ; Nice
+;(color-theme-hober) ; Nice
 ;(color-theme-fischmeister)
 ;(color-theme-billw) ; Black bg, nice
 ;(color-theme-subtle-hacker) ; Dark green bg
@@ -90,7 +90,6 @@
 ;(color-theme-euphoria)
 ;(color-theme-dirac) ; Nice - but # comments in ruby problematic
 ;(color-theme-)
-;(color-theme-)
 
 ;; show the column number in the status line
 (setq column-number-mode t)
@@ -108,8 +107,36 @@
 (require 'haml-mode)
 
 ;; auto-complete
-;(require 'auto-complete-config)
-;(ac-config-default)
+(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "/home/chetanv/.emacs.d/elisp/auto-complete/ac-dict")
+(ac-config-default)
+
+;; yasnippet
+(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-0.6.1c")
+(require 'yasnippet) ;; not yasnippet-bundle
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets")
+
+;; ajc-java-complete
+(add-to-list 'load-path "~/.emacs.d/elisp/ajc-java-complete/")
+(require 'ajc-java-complete-config)
+(add-hook 'java-mode-hook 'ajc-java-complete-mode)
+(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+
+;; icicles
+(add-to-list 'load-path "~/.emacs.d/elisp/icicles/")
+(require 'icicles)
+(icy-mode 1)
+;(global-set-key "\M-."     'icicle-find-first-tag)
+
+;; global (a better TAGS package)
+(autoload 'gtags-mode "gtags" "" t)
+(add-hook 'java-mode-hook '(lambda () (gtags-mode 1)) )
+
+;; ETAGS
+;(visit-tags-table "~/source/branches/dummyAgg/TAGS")
+
 
 ;;rsense
 ;(setq rsense-home "/usr/local/lib/rsense-0.3")
