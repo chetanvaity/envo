@@ -1,0 +1,11 @@
+# 3 panes one below another (For vertical monitor)
+
+selectp -t 0             # select the first (0) pane
+splitw -v -p 30          # split it vertically into two halves
+selectp -t 0             # select the first one (0) again 
+splitw -v -p 50          # split it horizontally into two halves
+
+# Run ls in pane 0
+selectp -t 0
+send-keys ls C-m
+

@@ -106,28 +106,31 @@
 
 (require 'haml-mode)
 
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
 ;; auto-complete
-(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "/home/chetanv/.emacs.d/elisp/auto-complete/ac-dict")
-(ac-config-default)
+;(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
+;(require 'auto-complete-config)
+;(add-to-list 'ac-dictionary-directories "/home/chetanv/.emacs.d/elisp/auto-complete/ac-dict")
+;(ac-config-default)
 
 ;; yasnippet
-(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-0.6.1c")
-(require 'yasnippet) ;; not yasnippet-bundle
-(yas/initialize)
-(yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets")
+;(add-to-list 'load-path "~/.emacs.d/elisp/yasnippet-0.6.1c")
+;(require 'yasnippet) ;; not yasnippet-bundle
+;(yas/initialize)
+;(yas/load-directory "~/.emacs.d/elisp/yasnippet-0.6.1c/snippets")
 
 ;; ajc-java-complete
-(add-to-list 'load-path "~/.emacs.d/elisp/ajc-java-complete/")
-(require 'ajc-java-complete-config)
-(add-hook 'java-mode-hook 'ajc-java-complete-mode)
-(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
+;(add-to-list 'load-path "~/.emacs.d/elisp/ajc-java-complete/")
+;(require 'ajc-java-complete-config)
+;(add-hook 'java-mode-hook 'ajc-java-complete-mode)
+;(add-hook 'find-file-hook 'ajc-4-jsp-find-file-hook)
 
 ;; icicles
-(add-to-list 'load-path "~/.emacs.d/elisp/icicles/")
-(require 'icicles)
-(icy-mode 1)
+;(add-to-list 'load-path "~/.emacs.d/elisp/icicles/")
+;(require 'icicles)
+;(icy-mode 1)
 ;(global-set-key "\M-."     'icicle-find-first-tag)
 
 ;; global (a better TAGS package)
