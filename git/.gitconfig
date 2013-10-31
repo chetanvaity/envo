@@ -8,5 +8,9 @@
 [core]
 	excludesfile = /home/chetanv/.gitignore_global
 	editor = emacs -nw
+	autocrlf = input
 [merge]
 	stat = true
+[branch "master"]
+	mergeoptions = --no-ff
+

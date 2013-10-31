@@ -99,10 +99,17 @@
 ;(setq frame-title-format "%f")
 
 ;; Column marker
-;(require 'column-marker)
-;(add-hook 'java-mode-hook (lambda () (interactive) (column-marker-1 80)))
+(require 'column-marker)
+(add-hook 'java-mode-hook (lambda () (interactive) (column-marker-1 120)))
 ;(global-set-key [?\C-c ?m] 'column-marker-1)
 ;(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
+
+;; Whitespace sanitizer and Indentation stuff
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/ethan-wspace.el"))
+(require 'ethan-wspace)
+(global-ethan-wspace-mode 1)
+(setq-default indent-tabs-mode nil)
+(setq tab-width 4)
 
 (require 'haml-mode)
 
