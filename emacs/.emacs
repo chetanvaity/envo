@@ -25,8 +25,8 @@
 ;;(set-frame-font "-b&h-lucida-bold-r-normal-sans-14-100-100-100-p-89-iso10646-1")
 ;;(set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1")
-(set-frame-font "-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1")
-;;(set-frame-font "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1")
+;;(set-frame-font "-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1")
+(set-frame-font "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-9")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-1")
@@ -56,7 +56,7 @@
 ;; Note that transperecncy does not work if color-theme is used
 (require 'color-theme)
 ;(color-theme-goldenrod) ; Dark bg - golden fonts
-;(color-theme-dark-laptop) ; Excellent
+(color-theme-dark-laptop) ; Excellent
 ;(color-theme-hober) ; Nice
 ;(color-theme-fischmeister)
 ;(color-theme-billw) ; Black bg, nice
@@ -95,8 +95,9 @@
 (setq column-number-mode t)
 
 ;; Show entire path in the frame title
-(setq frame-title-format '((buffer-file-name "%f - ") "%b"))
+;(setq frame-title-format '((buffer-file-name "Emacs - %f") "%b"))
 ;(setq frame-title-format "%f")
+(setq frame-title-format "Emacs")
 
 ;; Column marker
 (require 'column-marker)
@@ -111,7 +112,7 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
-(require 'haml-mode)
+;;(require 'haml-mode)
 
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
@@ -143,10 +144,11 @@
 ;; global (a better TAGS package)
 (autoload 'gtags-mode "gtags" "" t)
 (add-hook 'java-mode-hook '(lambda () (gtags-mode 1)) )
-
-;; ETAGS
-;(visit-tags-table "~/source/branches/dummyAgg/TAGS")
-
+(global-set-key (kbd "M-.") 'gtags-find-tag)
+(global-set-key (kbd "M-,") 'gtags-find-rtag)
+(setq gtags-mode-hook
+      '(lambda ()
+        (setq gtags-path-style 'relative)))
 
 ;;rsense
 ;(setq rsense-home "/usr/local/lib/rsense-0.3")
@@ -160,7 +162,7 @@
 ;; Transparency (does not work with color-theme)
 ;(set-frame-parameter (selected-frame) 'alpha '(85 50))
 ;(add-to-list 'default-frame-alist '(alpha 85 50))
-;
+
 ;(eval-when-compile (require 'cl))
 ; (defun toggle-transparency ()
 ;   (interactive)
@@ -173,6 +175,14 @@
 
 ;; Follow links version controlled files without asking
 (setq vc-follow-symlinks t)
+
+
+;; Java related
+(add-hook 'java-mode-hook
+          (lambda ()
+            "Treat Java 1.5 @-style annotations as comments."
+            (setq c-comment-start-regexp "(@|/(/|[*][*]?))")
+            (modify-syntax-entry ?@ "< b" java-mode-syntax-table)))
 
 ;; buffer-move (useful in with C-x 3)
 (require 'buffer-move)

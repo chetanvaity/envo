@@ -1,0 +1,34 @@
+# Colors reference taken from; http://j.mp/1jvzW6H
+Black="\e[0;30m"
+Blue="\e[0;34m"
+Green="\e[0;32m"
+Cyan="\e[0;36m"
+Red="\e[0;31m"
+Purple="\e[0;35m"
+Brown="\e[0;33m"
+Gray="\e[1;30m"
+BrightBlue="\e[1;34m"
+BrightGreen="\e[1;32m"
+BrightCyan="\e[1;36m"
+BrightRed="\e[1;31m"
+BrightPurple="\e[1;35m"
+Yellow="\e[1;33m"
+EndColor="\e[m"
+short_pwd() {
+  cwd=$(pwd | perl -F/ -ane 'print join( "/", map { $i++ < @F - 1 ?  substr $_,0,1 : $_ } @F)')
+  echo -n $cwd
+}
+git_status_color() {
+  all=$(git status --porcelain 2>/dev/null | wc -l)
+  new=$(git status --porcelain 2>/dev/null | cut -d' ' -f 1 | grep '??' | wc -l)
+  #echo all=$all,new=$new,
+  if [ "$all" -eq "0" ]; then
+    echo -e "$Green"
+  elif [ "$all" -eq "$new" ]; then
+    echo -e "$Yellow"
+  else
+    echo -e "$Red"
+  fi
+}
+export PS1="$Cyan\$(pwd)\$(git_status_color)\$(__git_ps1)$Brown$ $EndColor"
+
