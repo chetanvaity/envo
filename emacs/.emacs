@@ -44,7 +44,7 @@
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
 
-(global-set-key "\C-p" 'complete-symbol)
+;;(global-set-key "\C-p" 'complete-symbol)
 
 ;;Hide those temp files
 (defun make-backup-file-name (filename)
@@ -105,10 +105,10 @@
 ;(global-set-key [?\C-c ?m] 'column-marker-1)
 ;(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
-;; Whitespace sanitizer and Indentation stuff
+;; Whitespace sanitizer and Indentation stuff (Enabled on in Java)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/ethan-wspace.el"))
 (require 'ethan-wspace)
-(global-ethan-wspace-mode 1)
+(add-hook 'java-mode-hook (lambda () (global-ethan-wspace-mode 1)))
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
@@ -150,6 +150,13 @@
       '(lambda ()
         (setq gtags-path-style 'relative)))
 
+;; YAML
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+
 ;;rsense
 ;(setq rsense-home "/usr/local/lib/rsense-0.3")
 ;(add-to-list 'load-path (concat rsense-home "/etc"))
@@ -190,6 +197,9 @@
 (global-set-key (kbd "<C-S-down>")   'buf-move-down)
 (global-set-key (kbd "<C-S-left>")   'buf-move-left)
 (global-set-key (kbd "<C-S-right>")  'buf-move-right)
+
+;; buffer-menu
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-faces
