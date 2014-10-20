@@ -17,7 +17,7 @@
 (menu-bar-mode 0)
 
 ;; Chetan:
-(add-to-list 'load-path "/home/chetanv/.emacs.d/elisp")
+(add-to-list 'load-path "~/.emacs.d/elisp")
 (setq auto-mode-alist (cons '("\\.inc$" . php-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.xsd$" . sgml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rake$" . ruby-mode) auto-mode-alist))
@@ -120,7 +120,7 @@
 ;; auto-complete
 ;(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
 ;(require 'auto-complete-config)
-;(add-to-list 'ac-dictionary-directories "/home/chetanv/.emacs.d/elisp/auto-complete/ac-dict")
+;(add-to-list 'ac-dictionary-directories "~/.emacs.d/elisp/auto-complete/ac-dict")
 ;(ac-config-default)
 
 ;; yasnippet
@@ -151,11 +151,11 @@
         (setq gtags-path-style 'relative)))
 
 ;; YAML
-(require 'yaml-mode)
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-(add-hook 'yaml-mode-hook
-          '(lambda ()
-             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
+;(require 'yaml-mode)
+;(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
+;(add-hook 'yaml-mode-hook
+;          '(lambda ()
+;             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
 ;;rsense
 ;(setq rsense-home "/usr/local/lib/rsense-0.3")
