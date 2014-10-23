@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Push the current branch to origin
+
+export CURRENT_BRANCH=$(git branch | grep "*" | cut -d" " -f2)
+echo "--- Pushing $CURRENT_BRANCH..."
+git push origin ${CURRENT_BRANCH}
+if [ $? -ne 0 ]; then
+    echo "!!! git push origin $CURRENT_BRANCH failed"
+    exit 1
+fi
+echo "--- done"
