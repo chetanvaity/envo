@@ -106,9 +106,10 @@
 ;(add-hook 'ruby-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Whitespace sanitizer and Indentation stuff (Enabled on in Java)
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/ethan-wspace.el"))
-(require 'ethan-wspace)
-(add-hook 'java-mode-hook (lambda () (global-ethan-wspace-mode 1)))
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/ethan-wspace.el"))
+;(require 'ethan-wspace)
+;(add-hook 'java-mode-hook (lambda () (global-ethan-wspace-mode 1)))
+
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 

@@ -3,7 +3,7 @@
 	email = chetanv@gmail.com
 [color]
 	status = auto
-	branch = auto
+	branch = false
 	ui = auto
 [core]
 	excludesfile = /home/chetanv/.gitignore_global
