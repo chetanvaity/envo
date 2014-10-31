@@ -7,7 +7,7 @@ function color_my_prompt {
     local __cur_location="\[\033[01;34m\]\w"
     local __git_branch_color="\[\033[01;31m\]"
     #local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
-    local __git_branch='`git branch 2> /dev/null | grep --color=never -e ^* | sed s/..//`'
+    local __git_branch='`git branch 2> /dev/null | grep --color=never -e ^* | sed s/..// | sed s/^/\(/ | sed s/$/\)/`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
     export PS1="$__user_and_host $__cur_location$__git_branch_color $__git_branch $__prompt_tail$__last_color "
@@ -17,6 +17,9 @@ color_my_prompt
 # Get some colours
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+
+# Ignore some files in bash tab-completion
+export FIGNORE='.git:~'
 
 # All aliases
 source $HOME/.bash_aliases
