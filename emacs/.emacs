@@ -21,6 +21,17 @@
 (setq auto-mode-alist (cons '("\\.inc$" . php-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.xsd$" . sgml-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.rake$" . ruby-mode) auto-mode-alist))
+
+;; Markdown mode
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/markdown-mode"))
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files")
+(add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+
+;; Puppet files
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
  
 ;;(set-frame-font "-b&h-lucida-bold-r-normal-sans-14-100-100-100-p-89-iso10646-1")
 ;;(set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
@@ -51,6 +62,18 @@
   (expand-file-name
     (concat "." (file-name-nondirectory filename) "~")
     (file-name-directory filename)))
+
+;; This plist-to-alist definition is needed for color themes to work in EMacs 24
+(defun plist-to-alist (the-plist)
+  (defun get-tuple-from-plist (the-plist)
+    (when the-plist
+      (cons (car the-plist) (cadr the-plist))))
+
+  (let ((alist '()))
+    (while the-plist
+      (add-to-list 'alist (get-tuple-from-plist the-plist))
+      (setq the-plist (cddr the-plist)))
+  alist))
 
 ;; Color theme selection
 ;; Note that transperecncy does not work if color-theme is used
@@ -115,9 +138,6 @@
 
 ;;(require 'haml-mode)
 
-(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
-(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
-
 ;; auto-complete
 ;(add-to-list 'load-path "~/.emacs.d/elisp/auto-complete")
 ;(require 'auto-complete-config)
@@ -150,6 +170,7 @@
 (setq gtags-mode-hook
       '(lambda ()
         (setq gtags-path-style 'relative)))
+
 
 ;; YAML
 ;(require 'yaml-mode)
