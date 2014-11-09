@@ -6,6 +6,13 @@
 ;;; Don't show the welcome message
 (setq inhibit-startup-message t)
 
+;; Save and load desktop (previously open files)
+;(desktop-save-mode 1)
+
+;; Uniquify buffer names
+(setq uniquify-buffer-name-style 'forward)
+(require 'uniquify)
+
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
