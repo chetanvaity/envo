@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Create a new branch - from master
+
+echo "--- Fetching..."
+git fetch
+if [ $? -ne 0 ]; then
+    echo "!!! git fetch failed"
+    exit 1
+fi
+echo "--- done"
+
+echo "--- Checking out master..."
+git checkout master
+if [ $? -ne 0 ]; then
+    echo "!!! git checkout master failed"
+    exit 1
+fi
+echo "--- done"
+
+echo "--- Updating master..."
+git pull origin master
+if [ $? -ne 0 ]; then
+    echo "!!! git pull origin master failed"
+    exit 1
+fi
+echo "--- done"
+
+echo "--- Creating branch $1..."
+git branch $1
+if [ $? -ne 0 ]; then
+    echo "!!! git branch $1 failed"
+    exit 1
+fi
+echo "--- done"
+
+echo "--- Checking out $1..."
+git checkout $1
+if [ $? -ne 0 ]; then
+    echo "!!! git checkout $1 failed"
+    exit 1
+fi
+echo "--- done"
