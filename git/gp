@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Pull the current branch from origin
+
+CURRENT_BRANCH=$(git branch | grep "*" | cut -d" " -f2)
+echo "--- Pulling $CURRENT_BRANCH..."
+git pull origin ${CURRENT_BRANCH}
+if [ $? -ne 0 ]; then
+    echo "!!! git pull origin $CURRENT_BRANCH failed"
+    exit 1
+fi
+echo "--- done"

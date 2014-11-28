@@ -42,9 +42,9 @@
  
 ;;(set-frame-font "-b&h-lucida-bold-r-normal-sans-14-100-100-100-p-89-iso10646-1")
 ;;(set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
-;;(set-frame-font "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1")
+(set-frame-font "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1")
-(set-frame-font "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1")
+;;(set-frame-font "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-9")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--13-100-100-100-c-70-iso8859-1")
@@ -140,8 +140,10 @@
 ;(require 'ethan-wspace)
 ;(add-hook 'java-mode-hook (lambda () (global-ethan-wspace-mode 1)))
 
-(setq-default indent-tabs-mode nil)
-(setq tab-width 4)
+;; God help me!!!
+;(setq-default indent-tabs-mode nil)
+;(setq tab-width 4)
+;(setq-default indent-tabs-mode t)
 
 ;;(require 'haml-mode)
 

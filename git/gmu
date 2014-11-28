@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Git merge with upstream
+
+export CURRENT_BRANCH=$(git branch | grep "*" | cut -d" " -f2)
+
+echo "--- Fetching upstream..."
+git fetch upstream
+if [ $? -ne 0 ]; then
+    echo "!!! git fetch upstream failed"
+    exit 1
+fi
+
+echo "---Checkout master of local fork..."
+git checkout master
+git fetch upstream
+if [ $? -ne 0 ]; then
+    echo "!!! git checkout master failed"
+    exit 1
+fi
+
+echo "--- Merging upstream/master..."
+git merge upstream/master
+if [ $? -ne 0 ]; then
+    echo "!!! git merge upstream/master failed"
+    exit 1
+fi
+echo "--- done"
