@@ -1,5 +1,12 @@
 ;; .emacs
 
+;; Control size of the emacs window
+;; Works well on large monitor
+(add-to-list 'default-frame-alist '(left . 0))
+(add-to-list 'default-frame-alist '(top . 0))
+(add-to-list 'default-frame-alist '(height . 55))
+(add-to-list 'default-frame-alist '(width . 125))
+
 ;;; uncomment this line to disable loading of "default.el" at startup
 (setq inhibit-default-init t)
 
@@ -41,8 +48,8 @@
 
  
 ;;(set-frame-font "-b&h-lucida-bold-r-normal-sans-14-100-100-100-p-89-iso10646-1")
-;;(set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
-(set-frame-font "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1")
+(set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
+;;(set-frame-font "-misc-fixed-medium-r-normal--18-120-100-100-c-90-iso8859-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--20-140-100-100-c-100-iso8859-1")
 ;;(set-frame-font "-misc-fixed-medium-r-normal--20-200-75-75-c-100-iso8859-1")
 ;;(set-frame-font "-misc-fixed-bold-r-normal--18-120-100-100-c-90-iso8859-1")
@@ -231,6 +238,11 @@
 
 ;; buffer-menu
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+;; Org mode
+(setq org-agenda-files '("~/source/chetanvaity/org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+(setq org-startup-truncated nil)
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-faces
