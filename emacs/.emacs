@@ -46,6 +46,9 @@
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet manifests")
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;; YAML files
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
  
 ;;(set-frame-font "-b&h-lucida-bold-r-normal-sans-14-100-100-100-p-89-iso10646-1")
 (set-frame-font "-b&h-lucida-medium-r-normal-sans-14-100-100-100-p-80-iso10646-1")
@@ -243,6 +246,10 @@
 (setq org-agenda-files '("~/source/chetanvaity/org"))
 (global-set-key (kbd "C-c a") 'org-agenda)
 (setq org-startup-truncated nil)
+(setq org-todo-keywords
+      '((sequence "TODO" "PROG" "|" "DONE")))
+(setq org-todo-keyword-faces
+      '(("PROG" . "orange")))
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-faces
