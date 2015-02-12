@@ -3,3 +3,4 @@ alias g='git'
 alias grep='grep --color=always --exclude-dir=".svn" --exclude="*class"'
 alias less='less -R'
 alias ssh="ssh -v -4"
+alias mssh="ssh -i ~/aero-common.pem"

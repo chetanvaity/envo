@@ -1,0 +1,10 @@
+# 2 panes one besides another (For horiz monitor)
+
+selectp -t 0             # select the first (0) pane
+splitw -h -p 50          # split it vertically into two halves
+selectp -t 0             # select the first one (0) again 
+
+# Run ls in pane 0
+selectp -t 0
+send-keys ls C-m
+
