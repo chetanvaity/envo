@@ -25,9 +25,21 @@ export FIGNORE='.git:~'
 source $HOME/.bash_aliases
 
 # Java related
-export JAVA_HOME=$(java_home)
+#export JAVA_HOME=$(java_home)
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/chetanv/google-cloud-sdk/path.bash.inc'
+#source '/Users/chetanv/google-cloud-sdk/path.bash.inc'
 
 # The next line enables bash completion for gcloud.
-source '/Users/chetanv/google-cloud-sdk/completion.bash.inc'
+#source '/Users/chetanv/google-cloud-sdk/completion.bash.inc'
+
+# MacLatex in PATH
+export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-darwin/
+
+#export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.3/lib
+
+# Lose no history
+export HISTFILESIZE=1000000
+export HISTSIZE=10000
+export PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
+
+shopt -s histappend

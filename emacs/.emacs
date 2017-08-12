@@ -13,6 +13,9 @@
 ;;; Don't show the welcome message
 (setq inhibit-startup-message t)
 
+;; For Mac OSX
+(set-keyboard-coding-system nil)
+
 ;; Save and load desktop (previously open files)
 ;(desktop-save-mode 1)
 
@@ -154,7 +157,7 @@
 ;(add-hook 'java-mode-hook (lambda () (global-ethan-wspace-mode 1)))
 
 ;; God help me!!!
-;(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 ;(setq tab-width 4)
 ;(setq-default indent-tabs-mode t)
 
