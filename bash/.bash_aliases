@@ -10,4 +10,5 @@ alias la="ls -al"
 alias qssh="ssh -i ~/cv-qa.pem"
 alias pssh="ssh -i ~/prod.pem"
 alias prettyjson='python -m json.tool'
-
+alias gd="git diff"
+alias gs="git status"

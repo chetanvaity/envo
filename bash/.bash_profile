@@ -34,7 +34,7 @@ source $HOME/.bash_aliases
 
 # MacLatex in PATH
 export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-darwin/
-
+export PATH=$PATH:$HOME/bin
 #export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.3/lib
 
 # Lose no history

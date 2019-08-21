@@ -1,0 +1,15 @@
+#!/usr/local/bin/expect -f
+
+set timeout -1
+
+set HOST [lindex $argv 0];
+set PASS blah
+
+spawn ssh -o StrictHostKeyChecking=no $HOST
+expect "assword: "
+send $PASS\r
+expect "*]$ "
+send "sudo su - jenkins\r"
+expect "*password for chetan:"
+send $PASS\r
+interact
