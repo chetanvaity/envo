@@ -12,3 +12,5 @@ alias pssh="ssh -i ~/prod.pem"
 alias prettyjson='python -m json.tool'
 alias gd="git diff"
 alias gs="git status"
+alias k="kubectl"
+alias cdo="cd ~/source/orbitalinsight"

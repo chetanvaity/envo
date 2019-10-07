@@ -3,13 +3,15 @@
 
 # prompt with GIT branch
 function color_my_prompt {
-    local __user_and_host="\[\033[01;32m\]\u@\h"
+    #local __user_and_host="\[\033[01;32m\]\u@\h"
+    local __user_and_host=""
     local __cur_location="\[\033[01;34m\]\w"
     local __git_branch_color="\[\033[01;31m\]"
     #local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
     local __git_branch='`git branch 2> /dev/null | grep --color=never -e ^* | sed s/..// | sed s/^/\(/ | sed s/$/\)/`'
     local __prompt_tail="\[\033[35m\]$"
     local __last_color="\[\033[00m\]"
+    export PROMPT_DIRTRIM=2
     export PS1="$__user_and_host $__cur_location$__git_branch_color $__git_branch $__prompt_tail$__last_color "
 }
 color_my_prompt
@@ -33,9 +35,12 @@ source $HOME/.bash_aliases
 #source '/Users/chetanv/google-cloud-sdk/completion.bash.inc'
 
 # MacLatex in PATH
-export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-darwin/
+#export PATH=$PATH:/usr/local/texlive/2016/bin/x86_64-darwin/
 export PATH=$PATH:$HOME/bin
 #export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.3/lib
+export PATH=/usr/local/opt/ruby/bin:$PATH
+export PATH=$HOME/.gem/ruby/2.6.0/bin/:$PATH
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Lose no history
 export HISTFILESIZE=1000000
@@ -43,3 +48,8 @@ export HISTSIZE=10000
 export PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 
 shopt -s histappend
+
+# Lets see if kube-ps1 works
+#source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+source "$HOME/bin/kube-ps1.sh"
+export PS1='$(kube_ps1)'$PS1
