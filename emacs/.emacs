@@ -2,6 +2,33 @@
 
 ;; Control size of the emacs window
 ;; Works well on large monitor
+
+
+(require 'package)
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (proto (if no-ssl "http" "https")))
+  (when no-ssl
+    (warn "\
+Your version of Emacs does not support SSL connections,
+which is unsafe because it allows man-in-the-middle attacks.
+There are two things you can do about this warning:
+1. Install an Emacs version that does support SSL and be safe.
+2. Remove this warning from your init file so you won't see it again."))
+  ;; Comment/uncomment these two lines to enable/disable MELPA and MELPA Stable as desired
+  ;(add-to-list 'package-archives (cons "melpa" (concat proto "://melpa.org/packages/")) t)
+  (add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)
+  (when (< emacs-major-version 24)
+    ;; For important compatibility libraries like cl-lib
+    (add-to-list 'package-archives (cons "gnu" (concat proto "://elpa.gnu.org/packages/")))))
+(package-initialize)
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;(package-initialize)
+
 (add-to-list 'default-frame-alist '(left . 0))
 (add-to-list 'default-frame-alist '(top . 0))
 (add-to-list 'default-frame-alist '(height . 55))
@@ -76,6 +103,9 @@
 (global-set-key '[(f9)] 'hide-body)
 (global-set-key '[(f10)] 'show-all)
 (global-set-key '[(f12)] 'save-buffers-kill-emacs)
+;; Comment/Uncomment
+(global-set-key '[(f6)] 'comment-region)
+(global-set-key '[(f7)] 'uncomment-region)
 ;; [Home] & [End] key should take you to beginning and end of lines..
 (global-set-key [home] 'beginning-of-line)
 (global-set-key [end] 'end-of-line)
@@ -103,8 +133,8 @@
 ;; Color theme selection
 ;; Note that transperecncy does not work if color-theme is used
 (require 'color-theme)
-;(color-theme-goldenrod) ; Dark bg - golden fonts
-(color-theme-dark-laptop) ; Excellent
+(color-theme-goldenrod) ; Dark bg - golden fonts
+;(color-theme-dark-laptop) ; Excellent
 ;(color-theme-hober) ; Nice
 ;(color-theme-fischmeister)
 ;(color-theme-billw) ; Black bg, nice
@@ -232,7 +262,6 @@
 ;; Follow links version controlled files without asking
 (setq vc-follow-symlinks t)
 
-
 ;; Java related
 (add-hook 'java-mode-hook
           (lambda ()
@@ -261,6 +290,68 @@
 
 (put 'narrow-to-region 'disabled nil)
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
-  ;; Your init file should contain only one such instance.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell magit pcomplete-extension helm terraform-mode hcl-mode))))
+
+(add-to-list 'auto-mode-alist '("\\.tf$" . terraform-mode))
+
+;;; Helm
+(require 'helm-config)
+(helm-mode 1)
+(define-key global-map [remap find-file] 'helm-find-files)
+(define-key global-map [remap occur] 'helm-occur)
+(define-key global-map [remap list-buffers] 'helm-buffers-list)
+(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+(define-key global-map [remap execute-extended-command] 'helm-M-x)
+(define-key global-map [remap apropos-command] 'helm-apropos)
+(unless (boundp 'completion-in-region-function)
+  (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+  (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+
+(setq helm-ff-skip-boring-files t)
+(setq helm-ff-auto-update-initial-value t)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t)
+
+(global-set-key (kbd "C-c h o") 'helm-occur)
+(global-set-key (kbd "C-c h b") 'helm-resume)
+(global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
+;;; End Helm
+
+;;; Shell stuff
+(setq-default explicit-shell-file-name "/usr/local/bin/bash")
+(require 'pcomplete-extension)
+;;; End Shell stuff
+
+;;; EShell
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+;;; End EShell
+
+;;; iSpell
+(setq-default ispell-program-name "/usr/local/bin/ispell")
+;;; End iSpell
+
+;;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+;;; End Magit
+
