@@ -1,0 +1,128 @@
+clear
+k get pods -n ops
+kubectl get pods 
+kubectl get pods 
+kubectl get pods -n services
+nginx-ingress-controller-5f46989d4b-ff2zq                 1/1     Running   0          171m
+kubectl get pods
+kubectl get pods-n ops
+kubectl get pods -n ops
+kubectl get pods -n services
+kubectl get pods --all-namespaces
+ls
+kube-system   kube-scheduler-ip-10-17-83-111.us-west-2.compute.internal            1/1     Running   0          5d2h
+ls
+ping www.google.com
+README.md  bash  emacs  git  k8s  ruby  scripts  subversion  tmux
+ls
+ls
+helm-find-file
+helm-find-files
+helm-find-files kube
+ls
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . black) (wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ((string-equal theme-name "robin-hood") '((bg . "#304020")(wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (assoc 'punctuation theme))   (with-face "\u2388" :background prompt-bg :foreground (assoc 'wheel theme))   (with-face "|" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground "dark red")   (with-face ":" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground "turquoise")   (with-face ")" :background prompt-bg :foreground "white")))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground "blue")     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground "green")     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . black) (wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ((string-equal theme-name "robin-hood") '((bg . "#304020")(wheel . DodgerBlue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ))
+find-file argocd/argocd-install/README.mdfind-file argocd/argocd-install/README.md
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . black) (wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . DodgerBlue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ))
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . "black") (wheel . "blue") (punctuation . "white")                                                   (cluster . "red") (namespace . "turquoise") (path . "blue")                                                   (git . "green")))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . "DodgerBlue1") (punctuation . "NavajoWhite")                                                  (cluster . "coral") (namespace . "turquoise") (path . "DodgerBlue1")                                                  (git . "SpringGreen1")))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (assoc 'punctuation theme))   (with-face "\u2388" :background prompt-bg :foreground (assoc 'wheel theme))   (with-face "|" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground "dark red")   (with-face ":" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground "turquoise")   (with-face ")" :background prompt-bg :foreground "white")))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground "blue")     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground "green")     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . "black") (wheel . "blue") (punctuation . "white")                                                   (cluster . "red") (namespace . "turquoise") (path . "blue")                                                   (git . "green")))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . "DodgerBlue1") (punctuation . "NavajoWhite")                                                  (cluster . "coral") (namespace . "turquoise") (path . "DodgerBlue1")                                                  (git . "SpringGreen1")))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face "\u2388" :background prompt-bg :foreground (cdr (assoc 'wheel theme)))   (with-face "|" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground "dark red")   (with-face ":" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground "turquoise")   (with-face ")" :background prompt-bg :foreground "white")))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground "blue")     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground "green")     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . "black") (wheel . "blue") (punctuation . "white")                                                   (cluster . "red") (namespace . "turquoise") (path . "blue")                                                   (git . "green")))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . "DodgerBlue1") (punctuation . "NavajoWhite")                                                  (cluster . "coral") (namespace . "turquoise") (path . "DodgerBlue1")                                                  (git . "SpringGreen1")))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face "\u2388" :background prompt-bg :foreground (cdr (assoc 'wheel theme)))   (with-face "|" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'cluster theme)))   (with-face ":" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'namespace theme)))   (with-face ")" :background prompt-bg (cdr (assoc 'punctuation theme)))))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground "blue")     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground "green")     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . "black") (wheel . "blue") (punctuation . "white")                                                   (cluster . "red") (namespace . "turquoise") (path . "blue")                                                   (git . "green")))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . "DodgerBlue1") (punctuation . "NavajoWhite")                                                  (cluster . "coral") (namespace . "turquoise") (path . "DodgerBlue1")                                                  (git . "SpringGreen1")))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face "\u2388" :background prompt-bg :foreground (cdr (assoc 'wheel theme)))   (with-face "|" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'cluster theme)))   (with-face ":" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'namespace theme)))   (with-face ")" :background prompt-bg (cdr (assoc 'punctuation theme)))))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground (cdr (assoc 'path theme)))     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground (cdr (assoc 'git theme)))     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+ls
+kubectl config
+kubectl config set-context --current --namespace=ops
+k
+ eshell-aliases-file
+( eshell-aliases-file)
+print  eshell-aliases-file
+eshell-read-aliases-list 
+find-file ~/.emacs.d/eshell/alias
+argocd cluster add
+argocd cluster add k8.test2.orbitalinsight.io
+ emacs ~/.argocd/config 
+alias
+alias ff find-file $1
+ff ~/.argocd/config 
+find-file ~/.argocd/config 
+argocd login
+argocd login argocd.core.orbitalinsight.io
+alias
+ff hello
+alias ff find-file $1
+alias
+alias ff 'find-file $1'
+alias emacs 'find-file $1'
+alias ll 'ls -l $*'
+ll
+alias
+ff hello
+ls
+ll
+gp
+cd ..
+cd ..
+cd orbitalinsight/k8/
+(defun get-theme (theme-name)  (cond ((string-equal theme-name "dark-laptop") '((bg . black) (wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ((string-equal theme-name "robin-hood") '((bg . "#304020")(wheel . blue) (puncutation . white) (cluster . red)                                                   (namespace . turquoise) (path . blue) (git . green)))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (assoc 'punctuation theme))   (with-face "\u2388" :background prompt-bg :foreground (assoc 'wheel theme))   (with-face "|" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground "dark red")   (with-face ":" :background prompt-bg :foreground "white")   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground "turquoise")   (with-face ")" :background prompt-bg :foreground "white")))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground "blue")     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground "green")     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+ls
+a
+argocd login argocd.core.orbitalinsight.io --grpc-web
+argocd cluster add k8.test2.orbitalinsight.io
+argocd cluster add k8.test2.orbitalinsight.io --grpc-web
+FATA[0031] rpc error: code = Unknown desc = REST config invalid: Get https://master.test2.orbitalinsight.io/version?timeout=32s: dial tcp 10.17.71.241:443: i/o timeout 
+curl https://master.test2.orbitalinsight.io
+curl -k https://master.test2.orbitalinsight.io
+cleac  "apiVersion": "v1",
+clear
+ls
+;; A prompt for EShell with:;;  - Kubernetes context;;  - Shortened pwd;;  - Git branch;; TBD:;;  - Eliminate the "(.git)" which appears if pwd is not in a Git repo ;;  - Git status color;;  - Better pwd shortening(defun get-theme (theme-name)  "Some color themes to work with my favourite emacs color themes"  (cond ((string-equal theme-name "dark-laptop") '((bg . "black") (wheel . "blue")                                                   (punctuation . "white") (cluster . "red")                                                   (namespace . "turquoise") (path . "blue")                                                   (git . "green")))        ((string-equal theme-name "robin-hood") '((bg . "#304020") (wheel . "DodgerBlue1")                                                  (punctuation . "NavajoWhite") (cluster . "coral")                                                  (namespace . "turquoise") (path . "DodgerBlue1")                                                  (git . "SpringGreen1")))        ))(defun with-face (str &rest face-plist)  (propertize str 'face face-plist))(defun git-prompt ()  "Return string to be displayed about git status"  (car (last (split-string (shell-command-to-string "git  status | head -1")))))(defun path-prompt ()  "Return string to be displayed about the path"  (let ((dirs (split-string (eshell/pwd) "\/" t)))       (if (> (length dirs) 3)           (concat ".../" (mapconcat 'identity (nthcdr (- (length dirs) 2) dirs) "/"))         (eshell/pwd))))(defun k8s-prompt ()  "Return a fancy string with context/cluster name and namespace"  (concat   (with-face "(" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face "\u2388" :background prompt-bg :foreground (cdr (assoc 'wheel theme)))   (with-face "|" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string                                                  "kubectl config current-context | cut -d. -f1-2 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'cluster theme)))   (with-face ":" :background prompt-bg :foreground (cdr (assoc 'punctuation theme)))   (with-face (replace-regexp-in-string "\n$" "" (shell-command-to-string                                                  "kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null"))              :background prompt-bg :foreground (cdr (assoc 'namespace theme)))   (with-face ")" :background prompt-bg (cdr (assoc 'punctuation theme)))))  (defun k8s-git-eshell-prompt ()  (let ((prompt-bg "#304020") (theme (get-theme "robin-hood")))    (concat     (k8s-prompt)     (with-face (concat (path-prompt) " ") :background prompt-bg :foreground (cdr (assoc 'path theme)))     (with-face      (or (ignore-errors (format "(%s)" (git-prompt))) "")      :background prompt-bg :foreground (cdr (assoc 'git theme)))     (if (= (user-uid) 0)         (with-face " #" :foreground "red")       " $")     " ")))(setq eshell-prompt-function 'k8s-git-eshell-prompt)(setq eshell-highlight-prompt nil)
+ls
+curl -k https://master.test2.orbitalinsight.io
+k
+k get po --all-namespaces
+FATA[0031] rpc error: code = Unknown desc = REST config invalid: Get https://master.test2.orbitalinsight.io/version?timeout=32s: dial tcp 10.17.71.241:443: i/o timeout FATA[0031] rpc error: code = Unknown desc = REST config invalid: Get https://master.test2.orbitalinsight.io/version?timeout=32s: dial tcp 10.17.71.241:443: i/o timeout 
+argocd 
+argocd account
+argocd context
+argocd cluster
+argocd clusters list
+argocd cluster list
+clear
+ls
+argocd cluster
+argocd cluster --help
+argocd cluster add --help
+argocd cluster add 
+argocd cluster add k8.test2.orbitalinsight.io
+k get sa -n kube-system
+argocd cluster add k8.test2.orbitalinsight.io --grpc-web
+clusterrole-aggregation-controller   1         5d19h
+kubectl config set-context k8.core2.orbitalinsight.io --namespace=ops
+horizontal-pod-autoscaler            1         5d19h
+kubectl config set-context k8.core2.orbitalinsight.io --namespace=ops
+k get pods -n ops
+kubectl exec -it argocd-server-595b8d964d-qkkww bash
+k get pods -n ops
+k exec -it extenral-dns-external-dns-6c7b5f8c-tfqdx bash
+k get pods --all-namespaces
+k exec -it nginx-ingress-controller-5f46989d4b-ff2zq bash
+k
+k get nodes
+ls ~/.*
+ls ~/.c*
+ip-10-15-126-238.us-west-2.compute.internal   Ready    master   2d19h   v1.13.11
+ssh -i ~/.core.pem admin@ip-10-15-126-238.us-west-2.compute.internal
+gp
+g checkout chetan/addLabels
+alias g git
+g checkout chetan/addLabels
+git checkout chetan/addLabels
+alias
+gs
+alias gs 'git status'
+gs
+gp
+cd argocd/prometheus-operator/helm/
+ls
+cd grafana-dashboards/
+ls
+vimdiff a2.json aws-rds-cloudwatch.json

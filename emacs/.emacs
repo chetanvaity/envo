@@ -133,7 +133,7 @@ There are two things you can do about this warning:
 ;; Color theme selection
 ;; Note that transperecncy does not work if color-theme is used
 (require 'color-theme)
-(color-theme-goldenrod) ; Dark bg - golden fonts
+;(color-theme-goldenrod) ; Dark bg - golden fonts
 ;(color-theme-dark-laptop) ; Excellent
 ;(color-theme-hober) ; Nice
 ;(color-theme-fischmeister)
@@ -149,7 +149,7 @@ There are two things you can do about this warning:
 ;(color-theme-blue-mood) ; Blue bg
 ;(color-theme-tty-dark) ; Good black bg, but bright font colors
 ;(color-theme-digital-ofs1) ; Light coffee bg
-;(color-theme-robin-hood) ; Subtly sober green bg - looks good
+(color-theme-robin-hood) ; Subtly sober green bg - looks good
 ;(color-theme-midnight) ; Black bg, darkish fonts - not bad
 ;(color-theme-classic) ; Subtle pastel dark bluish bg - looks good
 ;(color-theme-taylor) ; Black bg - good for coding - Nice and subtle
