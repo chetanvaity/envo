@@ -21,6 +21,11 @@
 [[ -n $DEBUG ]] && set -x
 
 # Default values for the prompt
+KUBE_PS1_SYMBOL_COLOR="yellow"
+KUBE_PS1_CTX_COLOR="green"
+KUBE_PS1_NS_COLOR="cyan"
+
+
 # Override these values in ~/.zshrc or ~/.bashrc
 KUBE_PS1_BINARY="${KUBE_PS1_BINARY:-kubectl}"
 KUBE_PS1_SYMBOL_ENABLE="${KUBE_PS1_SYMBOL_ENABLE:-true}"

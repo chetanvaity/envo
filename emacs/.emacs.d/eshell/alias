@@ -1,7 +1,7 @@
 alias gs git status
+alias k kubectl
+alias ll ls -l
+alias emacs find-file
+alias ff find-file
+alias local 
 alias g git
-alias k kubectl $*
-alias ll ls -l $*
-alias emacs find-file $1
-alias ff find-file $1
-alias local $*
