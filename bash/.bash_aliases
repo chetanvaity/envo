@@ -19,7 +19,10 @@ alias gs="git status"
 alias gb="git branch --sort=-committerdate"
 
 # Orbital
-alias cdo="cd ~/source/orbitalinsight"
+#alias cdo="cd ~/source/orbitalinsight"
+
+# Project N
+alias cdp="cd ~/source/projectn"
 
 # Kubernetes
 alias k="kubectl"

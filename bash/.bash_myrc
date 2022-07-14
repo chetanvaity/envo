@@ -31,3 +31,6 @@ git_status_color() {
   fi
 }
 export PS1="$Cyan\$(pwd)\$(git_status_color)\$(__git_ps1)$Brown$ $EndColor"
+
+# Created by `pipx` on 2022-07-12 20:55:20
+export PATH="$PATH:/Users/chetan/.local/bin"

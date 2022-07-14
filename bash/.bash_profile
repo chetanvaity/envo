@@ -31,15 +31,17 @@ source $HOME/.bash_aliases
 # The next line updates PATH for the Google Cloud SDK.
 #source '/Users/chetanv/google-cloud-sdk/path.bash.inc'
 
-# The next line enables bash completion for gcloud.
-#source '/Users/chetanv/google-cloud-sdk/completion.bash.inc'
+# GCloud.
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
 
+# PATH modifications
 export PATH=$PATH:$HOME/bin
 #export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.3/lib
-export PATH=/usr/local/opt/ruby/bin:$PATH
-export PATH=$HOME/.gem/ruby/2.6.0/bin/:$PATH
+#export PATH=/usr/local/opt/ruby/bin:$PATH
+#export PATH=$HOME/.gem/ruby/2.6.0/bin/:$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH=$PATH:/Users/chetan/.linkerd2/bin
+#export PATH=$PATH:/Users/chetan/.linkerd2/bin
+export PATH=/opt/homebrew/bin/:$PATH
 
 # krew (kubectl plugins)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -57,9 +59,9 @@ shopt -s histappend
 
 # Lets see if kube-ps1 works
 source "$HOME/bin/kube-ps1.sh"
-export PS1='$(kube_ps1)'$PS1
-
-# Orbital
-export PYTHONPATH=$OI_TOOL/libs/python-common
+#export PS1='$(kube_ps1)'$PS1
 
 source <(kubectl completion bash)
+
+# Created by `pipx` on 2022-07-12 20:55:20
+export PATH="$PATH:/Users/chetan/.local/bin"
