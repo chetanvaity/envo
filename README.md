@@ -16,6 +16,8 @@ Mac setup
       HostName github.com
       IdentityFile ~/.ssh/id_rsa_github
       ```
+  * VSCode
+    * Login with Github
 
 Useful one-liners
 =================
