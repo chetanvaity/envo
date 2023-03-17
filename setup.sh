@@ -25,6 +25,10 @@ echo "Setup ssh..."
 rm -f ~/.ssh/config
 ln -s ${ENVO_DIR}/ssh/config ~/.ssh/config
 
+echo "Setup iterm2..."
+echo "Manually go to Settings -> General -> Preferences -> Load Preferences from custom folder"
+echo "Choose ${HOME}/source/chetanvaity/envo/iterm2"
+
 echo "Setup k8s..."
 rm -f ~/bin/kube-ps1.sh
 ln -s ${ENVO_DIR}/k8s/kube-ps1.sh ${HOME}/bin/kube-ps1.sh
