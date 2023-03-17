@@ -1,0 +1,10 @@
+Host github.com
+    User git
+    Hostname github.com
+    PreferredAuthentications publickey
+    IdentityFile /Users/chetan/.ssh/id_ed25519_chetanv@gmail
+Host gitlab.com
+    User git
+    Hostname gitlab.com
+    PreferredAuthentications publickey
+    IdentityFile /Users/chetan/.ssh/id_ed25519_cv@projectn
