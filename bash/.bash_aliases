@@ -1,14 +1,11 @@
 alias emacs='/usr/local/bin/emacs' 
 
-alias grep='grep --color=always --exclude-dir=".svn" --exclude="*class"'
+alias grep='grep --color=always --exclude-dir=".git"'
 alias less='less -R'
 #alias ssh="ssh -v -4"
-alias mssh="ssh -i ~/aero-common.pem"
 alias l="ls"
 alias ll="ls -al"
 alias la="ls -al"
-alias qssh="ssh -i ~/cv-qa.pem"
-alias pssh="ssh -i ~/prod.pem"
 alias prettyjson='python -m json.tool'
 alias dig="dig +short"
 
@@ -23,6 +20,7 @@ alias gb="git branch --sort=-committerdate"
 
 # Project N
 alias cdp="cd ~/source/projectn"
+alias cdo=cdp
 
 # Kubernetes
 alias k="kubectl"
@@ -36,4 +34,3 @@ kn() { kubectl config set-context --current --namespace="$1"; }
 # Emacs
 alias eo="emacs ~/source/orbitalinsight/ &"
 alias eh="emacs . &"
-alias eorg="emacs ~/source/chetanvaity/org/ &"
