@@ -5,6 +5,7 @@ ENVO_DIR=${HOME}/source/chetanvaity/envo
 mkdir -p ${HOME}/bin
 
 # Setup a new work Mac
+
 echo "Set up git..."
 # Install TBD
 rm -f ~/.gitconfig ~/.gitignore_global ~/bin/gcrb ~/bin/gp ~/bin/gpc ~/bin/gmu
@@ -35,3 +36,5 @@ ln -s ${ENVO_DIR}/k8s/kube-ps1.sh ${HOME}/bin/kube-ps1.sh
 curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl" --output ${HOME}/bin/kubectl
 chmod 755 ${HOME}/bin/kubectl
 
+echo "Setup aws-nuke..."
+brew install aws-nuke

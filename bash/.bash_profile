@@ -42,6 +42,7 @@ export PATH=$PATH:$HOME/bin
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 #export PATH=$PATH:/Users/chetan/.linkerd2/bin
 export PATH=/opt/homebrew/bin/:$PATH
+export PATH=$PATH:$HOME/.tfenv/bin
 
 # krew (kubectl plugins)
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -65,3 +66,6 @@ source <(kubectl completion bash)
 
 # Created by `pipx` on 2022-07-12 20:55:20
 export PATH="$PATH:/Users/chetan/.local/bin"
+
+# gvm (Go versions)
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
