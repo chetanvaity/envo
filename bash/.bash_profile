@@ -69,3 +69,9 @@ export PATH="$PATH:/Users/chetan/.local/bin"
 
 # gvm (Go versions)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/chetan/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/chetan/bin/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc'; fi
