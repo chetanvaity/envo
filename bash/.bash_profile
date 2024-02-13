@@ -1,5 +1,5 @@
 # Set a more linux like prompt
-#export PS1="[\\u@\\h \\W]$ "
+export PS1="[\\u@\\h \\W]$ "
 
 # prompt with GIT branch
 function color_my_prompt {
@@ -26,14 +26,6 @@ export FIGNORE='.git:~'
 # All aliases
 source $HOME/.bash_aliases
 
-# Java related
-#export JAVA_HOME=$(java_home)
-# The next line updates PATH for the Google Cloud SDK.
-#source '/Users/chetanv/google-cloud-sdk/path.bash.inc'
-
-# GCloud.
-source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
-
 # PATH modifications
 export PATH=$PATH:$HOME/bin
 #export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.3/lib
@@ -50,6 +42,9 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 PATH=$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+kubectx aws-tellus=arn:aws:eks:us-east-2:809541265033:cluster/tellus-multitenant
+kubectx gcp-tellus=gke_stone-bounty-249217_us-central1-c_tellus-multitenant-ver2
+
 
 # Lose no history
 export HISTFILESIZE=1000000
@@ -60,7 +55,7 @@ shopt -s histappend
 
 # Lets see if kube-ps1 works
 source "$HOME/bin/kube-ps1.sh"
-#export PS1='$(kube_ps1)'$PS1
+export PS1='$(kube_ps1)'$PS1
 
 source <(kubectl completion bash)
 
@@ -75,3 +70,34 @@ if [ -f '/Users/chetan/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/che
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc'; fi
+
+# Granica superman
+if [ -f $GOPATH/src/project.n/sync_toolchain.py ]; then
+    eval $($GOPATH/src/project.n/sync_toolchain.py --env)
+else
+    echo "WARNING: Granica environment script could not be located."
+fi
+
+assume_profile() {
+    local profile="$1"
+    local caller_identity="$(aws sts get-caller-identity --profile "$profile" 2>/dev/null)"
+
+    if [[ -n "$caller_identity" ]]; then
+        export AWS_PROFILE="$profile"
+        echo "Assumed profile: $profile"
+        echo "Caller Identity:"
+        echo "$caller_identity"
+    else
+        echo "Unable to assume profile '$profile', attempting AWS SSO login..."
+        aws sso login --profile "$profile"
+        local sso_login_status=$?
+
+        if [[ $sso_login_status -eq 0 ]]; then
+            echo "AWS SSO login successful. AWS_PROFILE is now set to '$profile'."
+            export AWS_PROFILE="$profile"
+        else
+            echo "AWS SSO login failed. AWS_PROFILE remains unchanged."
+        fi
+    fi
+}
+

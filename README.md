@@ -19,6 +19,3 @@ Mac setup
   * VSCode
     * Login with Github
 
-Useful one-liners
-=================
-  * ffmpeg -i MVI_6451.MOV -s 640x360 Rewa_dance_photosong.mp4

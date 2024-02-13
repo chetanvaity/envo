@@ -4,7 +4,7 @@
 	ui = auto
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = emacs -nw
+	editor = vim
 	autocrlf = input
 [merge]
 	stat = true
@@ -13,3 +13,6 @@
 	default = simple
 [pull]
 	rebase = true
+[user]
+	name = Chetan Vaity
+	email = cv@projectn.co

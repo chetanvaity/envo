@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ab-pod
+spec:
+  containers:
+  - name: ab-container
+    image: ab-image
+    imagePullPolicy: Never
+    command: ["/bin/bash"]
+    stdin: true
+    tty: true

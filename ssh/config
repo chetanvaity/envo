@@ -1,10 +1,49 @@
+Host 34.221.137.140
+    HostName 34.221.137.140
+    IdentityFile ~/ssh_key.pem
+    User ec2-user
+
+Host 34.221.137.140
+    HostName 34.221.137.140
+    IdentityFile ~/ssh_key.pem
+    User ec2-user
+
+Host 54.218.172.96
+    HostName 54.218.172.96
+    IdentityFile ~/ssh_key.pem
+    User ec2-user
+
+Host 18.237.93.124
+    HostName 18.237.93.124
+    IdentityFile ~/ssh_key.pem
+    User ec2-user
+
+Host 18.237.93.124
+    HostName 18.237.93.124
+    IdentityFile ~/ssh_key.pem
+    User ec2-user
+
+Host 52.13.124.19
+    HostName 52.13.124.19
+    IdentityFile /Users/chetan/.project-n-admin-server/aws/ssh_key.pem
+    User ec2-user
+
 Host github.com
     User git
-    Hostname github.com
+    HostName github.com
     PreferredAuthentications publickey
     IdentityFile /Users/chetan/.ssh/id_ed25519_chetanv@gmail
-Host gitlab.com
+
+Host github.com-granica
     User git
-    Hostname gitlab.com
+    HostName github.com
     PreferredAuthentications publickey
     IdentityFile /Users/chetan/.ssh/id_ed25519_cv@projectn
+
+Host gitlab.com
+    User git
+    HostName gitlab.com
+    PreferredAuthentications publickey
+    IdentityFile /Users/chetan/.ssh/id_ed25519_cv@projectn
+
+

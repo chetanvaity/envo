@@ -4,3 +4,4 @@
 **/[.][#]*
 id_rsa
 **/*.code-workspace
+go.work.sum
