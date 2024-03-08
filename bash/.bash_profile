@@ -78,6 +78,12 @@ else
     echo "WARNING: Granica environment script could not be located."
 fi
 
+# NVM (for projectn-docs)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 assume_profile() {
     local profile="$1"
     local caller_identity="$(aws sts get-caller-identity --profile "$profile" 2>/dev/null)"
