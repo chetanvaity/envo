@@ -4,6 +4,7 @@ Environment files
 
 Mac setup
 =========
+  * Keyboard -> Modifier Keys -> "Caps->Control"
   * 3 finger swipe up and add more "Spaces"
   * System Preferences -> Keyboard shortcuts -> Mission Control section -> Add shortcuts for switching to all spaces
   * Install iterm2
