@@ -15,6 +15,7 @@ ln -s ${ENVO_DIR}/git/gcrb ${HOME}/bin/gcrb
 ln -s ${ENVO_DIR}/git/gp ${HOME}/bin/gp
 ln -s ${ENVO_DIR}/git/gpc ${HOME}/bin/gpc
 ln -s ${ENVO_DIR}/git/gmu ${HOME}/bin/gmu
+cp ${ENVO_DIR}/git/git-prompt.sh ${HOME}/bin/git-prompt.sh
 
 echo "Setup bash..."
 rm -f ~/.bash_aliases ~/.bashrc ~/.bash_profile
@@ -33,8 +34,14 @@ echo "Choose ${HOME}/source/chetanvaity/envo/iterm2"
 echo "Setup k8s..."
 rm -f ~/bin/kube-ps1.sh
 ln -s ${ENVO_DIR}/k8s/kube-ps1.sh ${HOME}/bin/kube-ps1.sh
-curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl" --output ${HOME}/bin/kubectl
-chmod 755 ${HOME}/bin/kubectl
 
-echo "Setup aws-nuke..."
-brew install aws-nuke
+read -p "Do you want to install kubectl? (y/n): " install_kubectl
+if [ "$install_kubectl" = "y" ]; then
+    curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl" --output ${HOME}/bin/kubectl
+    chmod 755 ${HOME}/bin/kubectl
+fi
+
+read -p "Do you wanna install aws-nuke? (y/n): " install_awsnuke
+if [ "$install_awsnuke" = "y" ]; then
+    brew install aws-nuke
+fi

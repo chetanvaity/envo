@@ -59,8 +59,7 @@ export PS1='$(kube_ps1)'$PS1
 
 source <(kubectl completion bash)
 
-# Created by `pipx` on 2022-07-12 20:55:20
-export PATH="$PATH:/Users/chetan/.local/bin"
+export PATH="$PATH:/Users/chetan/bin"
 
 # gvm (Go versions)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
@@ -72,16 +71,16 @@ if [ -f '/Users/chetan/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/che
 if [ -f '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/chetan/bin/google-cloud-sdk/completion.bash.inc'; fi
 
 # Granica superman
-if [ -f $GOPATH/src/project.n/sync_toolchain.py ]; then
-    eval $($GOPATH/src/project.n/sync_toolchain.py --env)
-else
-    echo "WARNING: Granica environment script could not be located."
-fi
+#if [ -f $GOPATH/src/project.n/sync_toolchain.py ]; then
+#    eval $($GOPATH/src/project.n/sync_toolchain.py --env)
+#else
+#    echo "WARNING: Granica environment script could not be located."
+#fi
 
 # NVM (for projectn-docs)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
 assume_profile() {
