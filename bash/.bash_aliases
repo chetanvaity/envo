@@ -3,9 +3,9 @@ alias emacs='/usr/local/bin/emacs'
 alias grep='grep --color=always --exclude-dir=".git"'
 alias less='less -R'
 #alias ssh="ssh -v -4"
-alias l="ls"
-alias ll="ls -al"
-alias la="ls -al"
+alias l="ls --color"
+alias ll="ls -al --color"
+alias la="ls -al --color"
 alias prettyjson='python -m json.tool'
 alias dig="dig +short"
 
