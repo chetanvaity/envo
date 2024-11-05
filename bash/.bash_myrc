@@ -33,8 +33,7 @@ git_status_color() {
 source ~/bin/git-prompt.sh
 export PS1="$Cyan\$(pwd)\$(git_status_color)\$(__git_ps1)$Brown$ $EndColor"
 
-# Created by `pipx` on 2022-07-12 20:55:20
-export PATH="$PATH:/Users/chetan/.local/bin"
+export PATH="$PATH:${HOME}/bin"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/chetan/gcloud/google-cloud-sdk/path.bash.inc' ]; then . '/Users/chetan/gcloud/google-cloud-sdk/path.bash.inc'; fi
