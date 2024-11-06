@@ -3,6 +3,7 @@ alias emacs='/usr/local/bin/emacs'
 alias grep='grep --color=always --exclude-dir=".git"'
 alias less='less -R'
 #alias ssh="ssh -v -4"
+alias ls="ls --color"
 alias l="ls --color"
 alias ll="ls -al --color"
 alias la="ls -al --color"

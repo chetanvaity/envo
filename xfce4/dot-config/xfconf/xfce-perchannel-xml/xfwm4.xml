@@ -68,10 +68,10 @@
     <property name="use_compositing" type="empty"/>
     <property name="workspace_count" type="int" value="6"/>
     <property name="workspace_names" type="array">
-      <value type="string" value="Workspace 1"/>
+      <value type="string" value="Term"/>
       <value type="string" value="Workspace 2"/>
       <value type="string" value="Workspace 3"/>
-      <value type="string" value="Workspace 4"/>
+      <value type="string" value="B"/>
       <value type="string" value="Workspace 5"/>
       <value type="string" value="Workspace 6"/>
     </property>

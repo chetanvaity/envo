@@ -32,7 +32,7 @@ Host github.com
     User git
     HostName github.com
     PreferredAuthentications publickey
-    IdentityFile /Users/chetan/.ssh/id_ed25519_chetanv@gmail
+    IdentityFile /home/chetan/.ssh/id_ecdsa
 
 Host github.com-granica
     User git
